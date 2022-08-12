@@ -1,0 +1,28 @@
+// linter configuration. Run with:
+//
+// $ npm run lint
+{
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+
+    // inherit the linting specs from `airbnb-base`
+    "extends": [
+        "airbnb-base"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "@typescript-eslint"
+    ],
+
+    // custom rules overriding those of `airbnb-base`
+    "rules": {
+        // enable console logs in the src code
+        "no-console": "off"
+    }
+}

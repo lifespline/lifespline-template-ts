@@ -1,0 +1,22 @@
+// TS compiler `tsc` configuration. Compile with:
+//
+//  $ tsc <file>.ts
+{
+  // Specify which files to compile (ignores any other paths) (**required**)
+  "include": ["app/*.ts"],
+  "compilerOptions": {
+
+    // Specify which is the JS standard the TS files should be compiled to
+    "target": "es6",
+
+    // Specify the CommonJS standard JS API: API to declare modules that work 
+    // in hosts different than a browser.
+    "module": "CommonJS",
+
+    // VS Code has built-in support for TypeScript debugging. To support 
+    // debugging TypeScript in combination with the executing JavaScript code, 
+    // VS Code relies on source maps for the debugger to map between the 
+    // original TypeScript source code and the running JavaScript.
+    "sourceMap": true
+  }
+}

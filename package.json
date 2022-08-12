@@ -1,0 +1,66 @@
+{
+  "name": "lifespline-ts-template",
+  "author": "https://github.com/lifespline",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "jest --verbose --passWithNoTests",
+    "lint": "eslint app/*.ts test/*.ts --no-error-on-unmatched-pattern"
+  },
+  "//": [
+    "The package development dependencies listed with versions.",
+    "Running `npm install <package> --save-dev | -D` will add the package to",
+    "`devDependencies`. Development dependencies are dependencies not",
+    "required in production, like linting, testing or task-running tools.",
+    "Essentially, a development build is different than a production build.",
+    "List of development dependencies:",
+    " + `typescript` The typescript compiler from TS to JS",
+    " + Linting dependencies:",
+    "   + `eslint`",
+    "   + `@typescript-eslint/eslint-plugin`",
+    "   + `@typescript-eslint/parser`",
+    "   + `eslint-config-airbnb-base`",
+    "   + `eslint-plugin-import`",
+    " + Testing dependencies:",
+    "   + `@types/jest`",
+    "   + `jest`",
+    "   + `ts-jest`"
+  ],
+  "devDependencies": {
+    "@types/jest": "^28.1.4",
+    "@types/node": "^18.0.3",
+    "@types/prettier": "^2.6.3",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
+    "eslint": "^8.19.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "jest": "^28.1.2",
+    "ts-jest": "^28.0.5",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4",
+    "source-map-support": "^0.5.21"
+  },
+  "//": [
+    "The package production dependencies. Add dependencies with:",
+    "",
+    "$ npm install <package> --save",
+    ""
+  ],
+  "dependencies": {
+    "@types/node": "^18.0.3",
+    "ts-node": "^10.8.2",
+    "typescript": "^4.7.4"
+  },
+  "//": [
+    "Unit test specification. Run with:",
+    "",
+    "$ npm run test",
+    ""
+  ],
+  "jest": {
+    "preset": "ts-jest",
+    "testMatch": [
+      "**/test/*.ts?(x)"
+    ]
+  }
+}
