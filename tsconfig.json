@@ -1,0 +1,18 @@
+{
+  "include": ["app/*.ts"],
+  "exclude": [],
+  "compilerOptions": {
+
+    // compile TS into the ES6 JS standard (OPT)
+    "target": "es6",
+
+    // Use the CommonJS API to (OPT)
+    "module": "CommonJS",
+
+    // VS Code has built-in support for TypeScript debugging. To support 
+    // debugging TypeScript in combination with the executing JavaScript code, 
+    // VS Code relies on source maps for the debugger to map between the 
+    // original TypeScript source code and the running JavaScript.
+    "sourceMap": true
+  }
+}
