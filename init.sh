@@ -69,3 +69,6 @@ done
 # 4 - reset docs
 echo > CHANGELOG.md
 echo > README.md
+
+# 5 - clean
+rm init.sh
