@@ -10,6 +10,7 @@
 #     - `package.json::name`
 #     - `package.json::author`
 #     - `package.json::version`
+#
 # - Run `sudo bash init.sh` to install the default system and application 
 # dependencies of your TS project template.
 #

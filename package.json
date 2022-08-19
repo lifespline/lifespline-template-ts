@@ -1,5 +1,5 @@
 {
-  "name": "lifespline-ts-template",
+  "name": "lifespline-template-ts",
   "author": "https://github.com/lifespline",
   "version": "1.0.0",
   "scripts": {
@@ -12,7 +12,9 @@
     "`devDependencies`. Development dependencies are dependencies not",
     "required in production, like linting, testing or task-running tools.",
     "Essentially, a development build is different than a production build.",
+    "",
     "List of development dependencies:",
+    "",
     " + `typescript` The typescript compiler from TS to JS",
     " + Linting dependencies:",
     "   + `eslint`",
