@@ -1,14 +1,14 @@
 # About
 
-`lifespline-ts-template` is the `lifespline` TS template to bootstrap your typescript projects.
+TS template.
 
 # Motivation
 
-`lifespline-ts-template` comes from the need of having a standard starting template for typescript projects, instead of having to write one from scratch each time a project is initialized.
+Standard starting template for typescript projects.
 
 # Getting Started
 
-Having read and run [init.sh](init.sh), you are ready to develop your TS project. There are [npm scripts](package.json) automating the flows:
+Clone this repo and read and run [init.sh](init.sh), you are ready to develop your TS project. There are [npm scripts](package.json) automating the flows:
 
 - lint `$ npm run lint`
 - test `$ npm run test`
