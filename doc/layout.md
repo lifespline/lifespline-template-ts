@@ -3,6 +3,7 @@
 - [Changelog](#changelog)
 - [Linting](#linting)
 - [Dependencies](#dependencies)
+- [Task-runner (npm scripts)](#task-runner-npm-scripts)
 - [TS Compile](#ts-compile)
 - [TS Project Template Bootstrap](#ts-project-template-bootstrap)
 - [Unit Testing](#unit-testing)
@@ -45,6 +46,12 @@ The release changelog.
 /package.json
 ```
 
+# Task-runner (npm scripts)
+
+```txt
+/package.json
+```
+
 # TS Compile
 
 ```txt
@@ -66,5 +73,8 @@ The release changelog.
 # Unit Testing
 
 ```txt
-/package.json
+/
+│
+├╴ test/
+└╴ package.json
 ```
