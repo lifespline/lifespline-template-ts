@@ -1,5 +1,4 @@
 {
-  "include": ["app/*.ts"],
   "exclude": [],
   "compilerOptions": {
     "target": "es6",
@@ -8,6 +7,6 @@
     "noEmitOnError": true,
     "removeComments": true,
     "rootDir": "app",
-    "outDir": "bin"
+    "outDir": "dist"
   }
 }
