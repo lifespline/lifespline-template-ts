@@ -1,0 +1,17 @@
+sphinx
+
+# sphinx theme
+furo
+
+# task runner
+invoke
+
+# jupyter
+ipykernel
+pandas
+pyarrow
+
+# data viz
+matplotlib
+ipywidgets
+networkx
