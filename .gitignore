@@ -1,2 +1,5 @@
-# dependencies
-node_modules
+# py venv
+.env
+
+# task runner py cache
+__pycache__
