@@ -6,32 +6,43 @@ import os
 import sys
 from pathlib import Path
 
+docs_docker_image = 'samples_ts_docs'
+docs_docker_image_path = 'docs/sphinx/Dockerfile.debug'
+docs_debug_container_name = 'samples_ts_docs'
+sphinx_server_default_port = '8000'
+docker_host_sphinx_server_default_port = '8001'
+
 @task
-def docs(ctx, step='build', verbose=False):
+def docs(ctx, step='sphinx-build', port=docker_host_sphinx_server_default_port, verbose=False):
     """Documentation ops.
 
-    Build ``-s | -s build``
-    -----------------------
+    Build ``--step sphinx-build``
+    -----------------------------
 
     Builds the docs and checks for WARNINGS or ERRORS. If none occurs, the docs are published to the repo.
 
-    Start ``-s start``
-    ------------------
+    Build ``--step docker-build --port PORT``
+    -----------------------------------------
 
-    Start the sphinx local python server.
+    Builds the docker image and runs the container to debug the docs with a contaneirized sphinx server listenning on 0.0.0.0:``port``.
 
-    Stop ``-s stop``
+    Debug ``--step debug --port PORT``
+    ----------------------------------
+
+    Start a debugging local sphinx python server in a docker container.
+
+    Stop ``--step stop``
     ----------------
 
-    Stop the sphinx local python server.
-    TODO: the server stops but the task runner raises an error.
+    Stop the local debugging container with a sphinx python server.
 
     :param step: _description_, defaults to 'build'
     :type step: str, optional
     :param verbose: _description_, defaults to False
     :type verbose: bool, optional
     """
-    if step == 'build':
+    if step == 'sphinx-build':
+
         cmds = [
             "cd docs/sphinx",
             "make html",
@@ -47,36 +58,58 @@ def docs(ctx, step='build', verbose=False):
         elif res.stderr:
             sys.exit("There seems to be an ERROR in the build process. Add the flag '--verbose' to see the stderr.")
 
+        # rebuild image and container
+        cmd = f"""
+        docker build \
+            -t {docs_docker_image} \
+            -f {docs_docker_image_path} \
+            docs/sphinx
+
+        docker stop {docs_debug_container_name}
+        docker rm {docs_debug_container_name}
+
+        docker run \
+            --rm -d \
+            --name {docs_debug_container_name} \
+            -p 0.0.0.0:{port}:{sphinx_server_default_port} \
+            {docs_docker_image}
+        """
+        if verbose:
+            res = ctx.run(cmd)
+        else:
+            res = ctx.run(cmd, hide='both')
+
         print('build: OK')
 
-    if step == 'start':
-        docs(ctx,  step='build')
-        cmds = [
-            "cd docs/sphinx/_build/html",
-            "python -m http.server"
-        ]
+    if step == 'docker-build':
+        # build image if it doesn't exist locally already
+        cmd = f"""
+        if [[ "$(docker images -q {docs_docker_image} 2> /dev/null)" == "" ]]; then
+            docker build \
+                -t {docs_docker_image} \
+                -f {docs_docker_image_path} \
+                docs/sphinx
+        fi
+        """
+        ctx.run(cmd)
 
-        print('localhost start: OK')
-        print('Hosting sphinx server at localhost:8000')
-        print("'inv docs -s stop' to shutdown")
-        if verbose:
-            res = ctx.run(';'.join(cmds))
-        else:
-            res = ctx.run(';'.join(cmds), hide='both')
+        # run container it it doesn't exist locally already
+        cmd = f"""
+        if [[ "docker container inspect -f '{{{{.State.Running}}}}' {docs_debug_container_name}" != "true" ]]; then
+            docker run \
+                --rm -d \
+                --name {docs_debug_container_name} \
+                -p 0.0.0.0:{port}:{sphinx_server_default_port} \
+                {docs_docker_image}
+        fi
+        """
+        ctx.run(cmd)
 
     if step == 'stop':
-        cmds = [
-            'sudo kill -9 $( pgrep -f "python -m http.server" )'
-        ]
-
-        if verbose:
-            res = ctx.run(';'.join(cmds))
-        else:
-            res = ctx.run(';'.join(cmds), hide='both')
-        print('localhost stop: OK')
+        ctx.run(f'docker stop {docs_debug_container_name}')
 
     if step == 'publish':
-        docs(ctx,  step='build')
+        docs(ctx,  step='sphinx-build', port=port)
         cmds = [
             "cp -a docs/sphinx/_build/html/. docs/sphinx",
             "cd docs/sphinx"
@@ -114,3 +147,4 @@ def docs(ctx, step='build', verbose=False):
         ]
 
         print('local clean: OK')
+
