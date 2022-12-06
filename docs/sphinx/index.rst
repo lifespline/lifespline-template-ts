@@ -1,5 +1,5 @@
-Arteklabs Samples: TS
-=====================
+Arteklabs Skillset: TS Samples
+==============================
 
 Welcome to the ``arteklabs`` typescript samples.
 
