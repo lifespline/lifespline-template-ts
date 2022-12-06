@@ -1,6 +1,0 @@
-# docker build . -t arteklabs_docs
-FROM python:3.8
-COPY ./_build/html .
-ENTRYPOINT [ "python"]
-CMD ["-m", "http.server"]
-EXPOSE 8000
