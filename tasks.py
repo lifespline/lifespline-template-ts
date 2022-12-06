@@ -6,22 +6,80 @@ import os
 import sys
 from pathlib import Path
 
-docs_docker_image = 'samples_ts_docs'
-docs_docker_image_path = 'docs/sphinx/Dockerfile.debug'
+docs_docker_image = 'python:3.8'
 docs_debug_container_name = 'samples_ts_docs'
 sphinx_server_default_port = '8000'
-docker_host_sphinx_server_default_port = '8001'
+docker_host_sphinx_server_default_port = '8002'
+docs_debug_mnt_path = f"{os.getcwd()}/docs/sphinx/_build/html"
+docs_debug_container_path = "/root"
 
 @task
-def docs(ctx, step='sphinx-build', port=docker_host_sphinx_server_default_port, verbose=False):
+def git(ctx, clone=False, push=''):
+    """Git ops.
+
+    Clone
+    -----
+
+    Clone an arteklabs exercise repo.
+
+    Push
+    ----
+
+    Stage, commit and push.
+
+    TODO: may commit more than its supposed to.
+
+    :param ctx: _description_
+    :type ctx: _type_
+    :param clone: True
+    :type clone: _type_
+    :param push: the commit message
+    :type push: _type_
+    """
+
+    if clone:
+        repo = input('repo: ')
+        if not repo:
+            sys.exit("Please insert the valid name of an arteklabs exercise: 'samples-*'")
+        usr_name = input('user: ')
+        if not usr_name:
+            sys.exit('Please provide the name of a github user')
+        usr_email = input('user email: ')
+        if not usr_email:
+            sys.exit('Please provide the email of a github user')
+        home = str(Path.home())
+        repo_path = input('path [~/arteklabs]: ') or f'{home}/arteklabs'
+        if os.path.exists(repo_path):
+            cmds = [
+                f"git clone github:lifespline/{repo}.git {repo_path}/{repo}",
+                f"git -C {repo_path}/{repo} config user.name {usr_name}",
+                f"git -C {repo_path}/{repo} config user.email {usr_email}",
+            ]
+            for cmd in cmds:
+                ctx.run(cmd, hide='both')
+    if push:
+        cmds = [
+            f"git add docs/sphinx/src/backlog/requirements",
+            f"git add docs/sphinx/src/backlog/requirements.rst",
+            f"git add docs/sphinx/src/backlog/problem_statements.rst",
+            f"git add docs/sphinx/src/backlog/issues.rst",
+            f"git commit -m \"{push}\"",
+            "git push"
+        ]
+        for cmd in cmds:
+            ctx.run(cmd, hide='both')
+
+
+@task
+def docs(ctx, step='build', port=docker_host_sphinx_server_default_port, verbose=False):
     """Documentation ops.
 
-    Build ``--step sphinx-build``
+    Build ``--step build``
     -----------------------------
 
     Builds the docs and checks for WARNINGS or ERRORS. If none occurs, the docs are published to the repo.
 
-    Build ``--step docker-build --port PORT``
+    Build ``--step run --port PORT``
     -----------------------------------------
 
     Builds the docker image and runs the container to debug the docs with a contaneirized sphinx server listenning on 0.0.0.0:``port``.
@@ -41,7 +99,7 @@ def docs(ctx, step='sphinx-build', port=docker_host_sphinx_server_default_port, 
     :param verbose: _description_, defaults to False
     :type verbose: bool, optional
     """
-    if step == 'sphinx-build':
+    if step == 'build':
 
         cmds = [
             "cd docs/sphinx",
@@ -58,58 +116,45 @@ def docs(ctx, step='sphinx-build', port=docker_host_sphinx_server_default_port, 
         elif res.stderr:
             sys.exit("There seems to be an ERROR in the build process. Add the flag '--verbose' to see the stderr.")
 
-        # rebuild image and container
-        cmd = f"""
-        docker build \
-            -t {docs_docker_image} \
-            -f {docs_docker_image_path} \
-            docs/sphinx
-
-        docker stop {docs_debug_container_name}
-        docker rm {docs_debug_container_name}
-
-        docker run \
-            --rm -d \
-            --name {docs_debug_container_name} \
-            -p 0.0.0.0:{port}:{sphinx_server_default_port} \
-            {docs_docker_image}
-        """
-        if verbose:
-            res = ctx.run(cmd)
-        else:
-            res = ctx.run(cmd, hide='both')
-
         print('build: OK')
 
-    if step == 'docker-build':
-        # build image if it doesn't exist locally already
+    if step == 'run':
         cmd = f"""
-        if [[ "$(docker images -q {docs_docker_image} 2> /dev/null)" == "" ]]; then
-            docker build \
-                -t {docs_docker_image} \
-                -f {docs_docker_image_path} \
-                docs/sphinx
-        fi
-        """
-        ctx.run(cmd)
-
         # run container it it doesn't exist locally already
-        cmd = f"""
         if [[ "docker container inspect -f '{{{{.State.Running}}}}' {docs_debug_container_name}" != "true" ]]; then
             docker run \
-                --rm -d \
+                --rm \
+                -d \
                 --name {docs_debug_container_name} \
                 -p 0.0.0.0:{port}:{sphinx_server_default_port} \
-                {docs_docker_image}
+                --mount type=bind,source={docs_debug_mnt_path},target={docs_debug_container_path} \
+                {docs_docker_image} \
+                sleep infinity
         fi
+
+        # have the container running the sphinx server
+        docker exec \
+            -d \
+            -w {docs_debug_container_path} \
+            {docs_debug_container_name} \
+            python -m http.server
         """
-        ctx.run(cmd)
+        
+        if verbose:
+            ctx.run(cmd)
+        else:
+            ctx.run(cmd, hide='both')
+
+        print('local sphinx run: OK')
+        print(f'container: {docs_debug_container_name}')
+        print(f'host: http://0.0.0.0:{docker_host_sphinx_server_default_port}')
+        print('stop: inv docs --stop')
 
     if step == 'stop':
         ctx.run(f'docker stop {docs_debug_container_name}')
 
     if step == 'publish':
-        docs(ctx,  step='sphinx-build', port=port)
+        docs(ctx,  step='build', port=port)
         cmds = [
             "cp -a docs/sphinx/_build/html/. docs/sphinx",
             "cd docs/sphinx"
