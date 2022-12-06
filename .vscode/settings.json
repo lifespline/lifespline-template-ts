@@ -1,0 +1,45 @@
+{
+    // don't see these files in the vscode explorer (don't forget to ignore 
+    // them)
+    "files.exclude": {
+
+        // build files
+        "**/dist/*.js": { "when": true },
+
+        // build files for debugging
+        "**/dist/*.js.map": { "when": true },
+
+        // dependencies
+        "node_modules": { "when": true },
+    },
+
+    // show the names of parameters in function calls
+    "typescript.inlayHints.parameterNames.enabled": "all",
+
+    // show the types of variables that don't have explicit type annotations
+    "typescript.inlayHints.parameterTypes.enabled": "all",
+
+    // show the return types of functions that don't have an explicit type 
+    // annotation
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": "all",
+
+    // explicitly enable eslint (OPT)
+    "eslint.enable": true,
+
+    // explicitly override config files (OPT)
+    "eslint.options": { "overrideConfigFile": ".eslintrc.json" },
+
+    // explicitly lint as code is written (OPT)
+    "eslint.run": "onType",
+
+    // explicitly don't ignore warnings (OPT)
+    "eslint.quiet": true,
+
+    "eslint.runtime": "node",
+
+    // run eslint everytime a file TS file is saved
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    }
+
+}
