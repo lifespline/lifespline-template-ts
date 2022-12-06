@@ -1,5 +1,0 @@
-# project dependencies
-node_modules
-
-# compiled JS
-dist/*
