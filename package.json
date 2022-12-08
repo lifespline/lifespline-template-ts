@@ -3,7 +3,7 @@
   "name": "arteklabs-samples-ts",
   "version": "1.0.0-beta",
   "scripts": {
-    "lint": "eslint samples/**/*.ts samples/**/test/*.ts --no-error-on-unmatched-pattern",
+    "lint": "eslint . --ext .js,.ts,.tsx",
     "test": "jest --verbose --passWithNoTests"
   },
   "devDependencies": {
