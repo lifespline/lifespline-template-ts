@@ -27,7 +27,7 @@
   },
   "name": "arteklabs-samples-ts",
   "scripts": {
-    "docs": "typedoc",
+    "docs": "typedoc samples/index.ts",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "test": "jest --verbose --passWithNoTests",
     "watch": "tsc --watch"
