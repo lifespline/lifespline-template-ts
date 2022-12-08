@@ -252,6 +252,22 @@ Generate static webpage docs from your ``jsdocs`` with ``typedoc``. Configure ``
 
    ``entryPoints`` should be understood as the users of the project can import
 
+The task in the ``npm`` task runner (``packge.json``):
+
+.. code-block:: json
+   
+   {
+      "scripts": {
+         "docs": "typedoc samples/index.ts"
+      }
+   }
+
+.. note::
+   
+   See `github issue <https://github.com/TypeStrong/typedoc/issues/1515>`_ on specifying the typedoc entrypoint explicitly in the npm script.
+
+
+
 Data Types
 ----------
 
