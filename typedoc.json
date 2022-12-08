@@ -1,0 +1,7 @@
+{
+    "out": "docs/sphinx/src/typedocs",
+    "name": "Arteklabs Skillset: TS Samples",
+    "excludeExternals": true,
+    "includeVersion": true,
+    "entryPoints": ["samples/index.ts"]
+}

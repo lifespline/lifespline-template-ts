@@ -32,11 +32,5 @@
     "test": "jest --verbose --passWithNoTests",
     "watch": "tsc --watch"
   },
-  "typedocOptions": {
-    "entryPoints": ["samples/index.ts"],
-    "out": "docs/sphinx/src/typedocs",
-    "name": "Arteklabs Skillset: TS Samples",
-    "includeVersion": true
-  },
   "version": "1.0.0-beta"
 }
