@@ -3,6 +3,7 @@
   "name": "arteklabs-samples-ts",
   "version": "1.0.0-beta",
   "scripts": {
+    "start": "tsc --watch",
     "lint": "eslint . --ext .js,.ts,.tsx",
     "test": "jest --verbose --passWithNoTests"
   },
