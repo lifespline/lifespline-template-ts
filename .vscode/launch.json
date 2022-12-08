@@ -1,0 +1,31 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "samples: getting_started",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "program": "${workspaceFolder}/samples/getting_started/sample.ts",
+            "outFiles": [
+                "${workspaceFolder}/dist/getting_started/*.js"
+            ]
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "samples: inheritance",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "preLaunchTask": "tsc: build - tsconfig.json",
+            "program": "${workspaceFolder}/samples/inheritance/solution.ts",
+            "outFiles": [
+                "${workspaceFolder}/dist/inheritance/*.js"
+            ]
+        }
+    ]
+}

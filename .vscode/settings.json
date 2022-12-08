@@ -2,16 +2,11 @@
     // don't see these files in the vscode explorer (don't forget to ignore 
     // them)
     "files.exclude": {
+
         // build files
-        "**/bin/*.js": { "when": true },
-
-        // build files for debugging
-        "**/bin/*.js.map": { "when": true },
-
-        // aws resources build files
         "**/dist/*.js": { "when": true },
 
-        // aws resources build files for debugging
+        // build files for debugging
         "**/dist/*.js.map": { "when": true },
 
         // dependencies
@@ -31,9 +26,6 @@
     // explicitly enable eslint (OPT)
     "eslint.enable": true,
 
-    // explicitly override config files (OPT)
-    "eslint.options": { "overrideConfigFile": ".eslintrc.json" },
-
     // explicitly lint as code is written (OPT)
     "eslint.run": "onType",
 
@@ -45,6 +37,11 @@
     // run eslint everytime a file TS file is saved
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
 
+    // typescript eslint rules (OPT)
+    "eslint.validate": [
+        "typescript",
+        "javascript"
+    ],
 }

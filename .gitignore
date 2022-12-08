@@ -1,5 +1,9 @@
-# py venv
+# task runner depednencies
 .env
-
-# task runner py cache
 __pycache__
+
+# project dependencies
+node_modules
+
+# compiled JS
+dist/*

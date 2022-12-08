@@ -1,0 +1,30 @@
+{
+  "author": "https://github.com/lifespline",
+  "name": "arteklabs-samples-ts",
+  "version": "1.0.0-beta",
+  "scripts": {
+    "lint": "eslint samples/**/*.ts samples/**/test/*.ts --no-error-on-unmatched-pattern",
+    "test": "jest --verbose --passWithNoTests"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/plugin-transform-typescript": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "typescript": "^4.9.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testMatch": [
+      "**/**/test/*.ts?(x)"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-typescript"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "parser": "@babel/eslint-parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    }
+}
