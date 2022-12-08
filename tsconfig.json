@@ -5,7 +5,9 @@
   ],
   "exclude": [],
   "compilerOptions": {
-      "types": ["jest"],
+      "types": [
+        "jest"
+      ],
       "target": "es6",
       "module": "CommonJS",
       "sourceMap": true,

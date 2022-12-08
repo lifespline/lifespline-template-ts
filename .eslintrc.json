@@ -6,9 +6,7 @@
     "plugins": [
         "@typescript-eslint"
     ],
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es2021": true
+    "rules": {
+        "no-unexpected-multiline": "error"
     }
 }

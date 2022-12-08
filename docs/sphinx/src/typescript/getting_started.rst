@@ -52,6 +52,7 @@ Compiling a TS file into JS
 
 The TS compiler is configured in ``tsconfig.json`` (which can be created by running ``tsc --init``) and it enables the configuration of the compilation process. Some of the the possible configuration options:
 
+``include``: all the files necessary to compile this project
 * ``types``: ["jest"] See this `vid::5.37 <https://www.youtube.com/watch?v=6oHy58OOQkA>`_ for an explanation.
 * ``noEmit``: ``true`` if using Babel.
 * ``target``: the version of JS to transpile the TS files into (all browsers implement at least ``ES2016``)
@@ -225,6 +226,47 @@ At ``.eslintrc.json``, it is required to specify the typescript parser ``parser 
    {
       "parser": "@babel/eslint-parser"
    }
+
+JSdocs
+------
+
+Use ``jsdocs`` to document the TS code by typing ``/**`` the line just before the TS component.
+
+Docs
+----
+
+Generate static webpage docs from your ``jsdocs`` with ``typedoc``. Configure ``typedoc`` either in ``typedoc.json`` or in ``package.json`` as:
+
+.. code-block:: json
+   
+   {
+      "typedocOptions": {
+            "entryPoints": [
+            "samples/function/solution.ts"
+         ],
+         "out": "docs/sphinx/src/typedocs"
+      }
+   }
+
+.. node::
+
+   ``entryPoints`` should be understood as the users of the project can import
+
+The task in the ``npm`` task runner (``packge.json``):
+
+.. code-block:: json
+   
+   {
+      "scripts": {
+         "docs": "typedoc samples/index.ts"
+      }
+   }
+
+.. note::
+   
+   See `github issue <https://github.com/TypeStrong/typedoc/issues/1515>`_ on specifying the typedoc entrypoint explicitly in the npm script.
+
+
 
 Data Types
 ----------
