@@ -26,9 +26,6 @@
     // explicitly enable eslint (OPT)
     "eslint.enable": true,
 
-    // explicitly override config files (OPT)
-    "eslint.options": { "overrideConfigFile": ".eslintrc.json" },
-
     // explicitly lint as code is written (OPT)
     "eslint.run": "onType",
 
@@ -40,6 +37,11 @@
     // run eslint everytime a file TS file is saved
     "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
-    }
+    },
 
+    // typescript eslint rules (OPT)
+    "eslint.validate": [
+        "typescript",
+        "javascript"
+    ],
 }

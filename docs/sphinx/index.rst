@@ -8,5 +8,7 @@ Welcome to the ``arteklabs`` typescript samples.
    :caption: Contents:
 
    src/typescript
+   src/samples
    src/contributing
    src/literature
+
