@@ -43,5 +43,5 @@
     "eslint.validate": [
         "typescript",
         "javascript"
-    ],
+    ]
 }
