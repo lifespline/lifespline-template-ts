@@ -17,11 +17,19 @@
     "typescript.inlayHints.parameterNames.enabled": "all",
 
     // show the types of variables that don't have explicit type annotations
-    "typescript.inlayHints.parameterTypes.enabled": "all",
+    "typescript.inlayHints.parameterTypes.enabled": true,
 
     // show the return types of functions that don't have an explicit type 
     // annotation
-    "typescript.inlayHints.functionLikeReturnTypes.enabled": "all",
+    "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+
+    // show the type of class properties that don't have an explicit type annotation
+    "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+
+    // automatic imports
+    "typescript.suggest.autoImports": true,
+
+    "typescript.suggest.completeJSDocs": true,
 
     // explicitly enable eslint (OPT)
     "eslint.enable": true,
