@@ -74,27 +74,29 @@ The TS compiler is configured in ``tsconfig.json`` (which can be created by runn
 .. code-block:: json
 
    {
-   "include": [
-       "samples/**/*.ts",
-       "samples/**/test/*.ts"
-   ],
-   "exclude": [],
-   "compilerOptions": {
-       "types": ["jest"],
-       "target": "es6",
-       "module": "CommonJS",
-       "sourceMap": true,
-       "strict": true,
-       "strictNullChecks": true,
-       "noEmitOnError": true,
-       "noImplicitAny": true,
-       "noImplicitReturns": true,
-       "noUnusedParameters": true,
-       "noUnusedLocals": true,
-       "removeComments": true,
-       "strictPropertyInitialization": false,
-       "outDir": "dist"
-   }
+      "include": [
+          "samples/**/*.ts",
+          "samples/**/test/*.ts"
+      ],
+      "exclude": [],
+      "compilerOptions": {
+          "types": [
+            "jest"
+          ],
+          "target": "es6",
+          "module": "CommonJS",
+          "sourceMap": true,
+          "strict": true,
+          "strictNullChecks": true,
+          "noEmitOnError": true,
+          "noImplicitAny": true,
+          "noImplicitReturns": true,
+          "noUnusedParameters": true,
+          "noUnusedLocals": true,
+          "removeComments": true,
+          "strictPropertyInitialization": false,
+          "outDir": "dist"
+      }
    }
 
 
