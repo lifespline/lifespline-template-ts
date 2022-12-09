@@ -1,0 +1,586 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+<link rel="index" title="Index" href="../../genindex.html" /><link rel="search" title="Search" href="../../search.html" /><link rel="next" title="Task Runner" href="task_runner.html" /><link rel="prev" title="Typescript" href="../typescript.html" />
+
+    <!-- Generated with Sphinx 5.3.0 and Furo 2022.12.07 -->
+        <title>Getting Started - Arteklobs Skillset: TS Samples 1.0.0-beta documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo.css?digest=91d0f0d1c444bdcb17a68e833c7a53903343c195" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../../index.html"><div class="brand">Arteklobs Skillset: TS Samples 1.0.0-beta documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../../index.html">
+  
+  
+  <span class="sidebar-brand-text">Arteklobs Skillset: TS Samples 1.0.0-beta documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="../typescript.html">Typescript</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_runner.html">Task Runner</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../samples.html">Samples</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../samples_docs.html">Getting Started: Sample 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples_docs.html#getting-started-sample-2">Getting Started: Sample 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples_docs.html#npx">npx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../samples_docs.html#ts-template">TS Template</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../contributing.html">Contributing</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/configuration.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/usage.html">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/docs.html">Documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/contributing.html">Contributing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/license.html">License</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../contributing/authors.html">Authors</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../literature.html">Literature</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h1>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
+<p>Introduction to Typescript using the vscode IDE.</p>
+</section>
+<section id="typescript">
+<h2>Typescript<a class="headerlink" href="#typescript" title="Permalink to this heading">#</a></h2>
+<p>The key value proposition of JS:</p>
+<blockquote>
+<div><p>The ability to run your code anywhere and on every platform, browser, or host.</p>
+</div></blockquote>
+<p>JS wasn’t designed however for very complex applications and it lacks features from more mature languages. TS is a superset of JS (<a class="reference external" href="https://www.ecma-international.org/ecma-262/6.0/">ES6</a> to be precise), meaning it <strong>extends</strong> JS, that is:</p>
+<ul class="simple">
+<li><p>Any JS file is a TS file: It suffices to change the extension from <cite>.js</cite> to <cite>.ts</cite>. Indeed, any TS file compiles into JS before being executed.</p></li>
+<li><p>Any TS file <a class="reference external" href="https://babeljs.io/">builds/transpiles</a> or <a class="reference external" href="https://www.typescriptlang.org/download">compiles</a> to an equivalent JS file: Most runtimes can’t process TS natively, only JS. No browser can interpret TS.</p></li>
+<li><dl class="simple">
+<dt>The superset adds to JS some of the features of more mature languages (although you need to configure the compiler appropriately in some cases):</dt><dd><ul>
+<li><p>static typing</p></li>
+<li><p>interfaces</p></li>
+<li><p>generics</p></li>
+<li><p>abstract classes</p></li>
+<li><p>data modifiers</p></li>
+<li><p>optionals</p></li>
+<li><p>function overloading</p></li>
+<li><p>decorators</p></li>
+<li><p>type utils</p></li>
+<li><p>readonly keyword</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</section>
+<section id="installing-typescript">
+<h2>Installing Typescript<a class="headerlink" href="#installing-typescript" title="Permalink to this heading">#</a></h2>
+<p>TS dependencies</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo apt update
+$ sudo apt install nodejs npm
+$ yes <span class="p">|</span> sudo apt autoremove
+</pre></div>
+</div>
+<p>TS</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ sudo npm install -g typescript
+</pre></div>
+</div>
+</section>
+<section id="compiling-a-ts-file-into-js">
+<h2>Compiling a TS file into JS<a class="headerlink" href="#compiling-a-ts-file-into-js" title="Permalink to this heading">#</a></h2>
+<p>The TS compiler is configured in <code class="docutils literal notranslate"><span class="pre">tsconfig.json</span></code> (which can be created by running <code class="docutils literal notranslate"><span class="pre">tsc</span> <span class="pre">--init</span></code>) and it enables the configuration of the compilation process. Some of the the possible configuration options:</p>
+<p><code class="docutils literal notranslate"><span class="pre">include</span></code>: all the files necessary to compile this project
+* <code class="docutils literal notranslate"><span class="pre">types</span></code>: [“jest”] See this <a class="reference external" href="https://www.youtube.com/watch?v=6oHy58OOQkA">vid::5.37</a> for an explanation.
+* <code class="docutils literal notranslate"><span class="pre">noEmit</span></code>: <code class="docutils literal notranslate"><span class="pre">true</span></code> if using Babel.
+* <code class="docutils literal notranslate"><span class="pre">target</span></code>: the version of JS to transpile the TS files into (all browsers implement at least <code class="docutils literal notranslate"><span class="pre">ES2016</span></code>)
+* <code class="docutils literal notranslate"><span class="pre">module</span></code>:
+* <code class="docutils literal notranslate"><span class="pre">rootDir</span></code>: directory with TS source files
+* <code class="docutils literal notranslate"><span class="pre">outDir</span></code>: transpiled JS source files
+* <code class="docutils literal notranslate"><span class="pre">removeComments</span></code>: remove comments on transpilation
+* <code class="docutils literal notranslate"><span class="pre">strict</span></code>: <code class="docutils literal notranslate"><span class="pre">true</span></code>, to enable all default JS compiling specifications
+* <code class="docutils literal notranslate"><span class="pre">strictNullChecks</span></code>: <code class="docutils literal notranslate"><span class="pre">true</span></code>, evaluate null values
+* <code class="docutils literal notranslate"><span class="pre">noEmit</span></code>:
+* <code class="docutils literal notranslate"><span class="pre">noEmitOnError</span></code>: Don’t transpile into JS if there are errors in TS
+* <code class="docutils literal notranslate"><span class="pre">sourceMap</span></code>: maps how each TS line maps to the transpiled JS source code. This is necessary to debug TS code
+* <code class="docutils literal notranslate"><span class="pre">noImplicitAny</span></code>: don’t compile is a varaible is implicitly declared as of type any
+* <code class="docutils literal notranslate"><span class="pre">noUnusedParameters</span></code>: Don’t allow for unused parameters
+* <code class="docutils literal notranslate"><span class="pre">noImplicitReturns</span></code>: Don’t allow the compiler to infer the return type from the return statements, which can cause problems.
+* <code class="docutils literal notranslate"><span class="pre">noUnusedLocals</span></code>: Don’t allow unused variables.
+* <code class="docutils literal notranslate"><span class="pre">strictPropertyInitialization</span></code>: <code class="docutils literal notranslate"><span class="pre">false</span></code>, enable declaring class properties without initializing them in the constructor.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;samples/**/*.ts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="s2">&quot;samples/**/test/*.ts&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">],</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;exclude&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;compilerOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;types&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;jest&quot;</span><span class="w"></span>
+<span class="w">       </span><span class="p">],</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;target&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;es6&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;module&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CommonJS&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;sourceMap&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;strict&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;strictNullChecks&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;noEmitOnError&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;noImplicitAny&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;noImplicitReturns&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;noUnusedParameters&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;noUnusedLocals&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;removeComments&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;strictPropertyInitialization&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;outDir&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;dist&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Running <code class="docutils literal notranslate"><span class="pre">tsc</span></code> compiles all TS files found in <code class="docutils literal notranslate"><span class="pre">compilerOptions.rootDir</span></code>, or in the intersection of <code class="docutils literal notranslate"><span class="pre">include</span></code> and <code class="docutils literal notranslate"><span class="pre">exclude</span></code></p>
+</div>
+</section>
+<section id="project-dependencies">
+<h2>Project Dependencies<a class="headerlink" href="#project-dependencies" title="Permalink to this heading">#</a></h2>
+<p>Each typescript project defines its dependencies in <code class="docutils literal notranslate"><span class="pre">package.json</span></code>. These dependencies can be installed in your system either locally <code class="docutils literal notranslate"><span class="pre">&lt;project&gt;/node_modules/.bin</span></code> or globally <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Running <code class="docutils literal notranslate"><span class="pre">npm</span> <span class="pre">install</span></code> will install those dependencies in the project folder (hence ignoring them in <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> by adding the line <code class="docutils literal notranslate"><span class="pre">node_modules</span></code>, i.e., the dependencies).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>project information</dt><dd><ul>
+<li><p>author</p></li>
+<li><p>name</p></li>
+<li><p>version</p></li>
+<li><p>scripts</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Production Dependencies</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Development dependencies</dt><dd><ul>
+<li><p>typescript: <code class="docutils literal notranslate"><span class="pre">typescript</span></code></p></li>
+<li><dl class="simple">
+<dt>Linting:</dt><dd><ul>
+<li><p>linter: <code class="docutils literal notranslate"><span class="pre">eslint</span></code></p></li>
+<li><p>parser: <code class="docutils literal notranslate"><span class="pre">babel-eslint</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="nt">&quot;author&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://github.com/lifespline&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;dependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span><span class="w"></span>
+<span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;babel-eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^10.1.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;eslint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^8.29.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;typescript&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^4.9.3&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;jest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;preset&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ts-jest&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;testMatch&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">    </span><span class="s2">&quot;**/**/test/*.ts?(x)&quot;</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arteklabs-samples-ts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;lint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;eslint ./**/*.ts ./test/*.ts --no-error-on-unmatched-pattern&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;test&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jest --verbose --passWithNoTests&quot;</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
+<span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.0.0-beta&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UT configuration with <code class="docutils literal notranslate"><span class="pre">jest</span></code> can be specified either at <code class="docutils literal notranslate"><span class="pre">package.json::jest</span></code> or at <code class="docutils literal notranslate"><span class="pre">jest.config.js</span></code>.</p>
+</div>
+</section>
+<section id="running-a-ts-file">
+<h2>Running a TS file<a class="headerlink" href="#running-a-ts-file" title="Permalink to this heading">#</a></h2>
+<p>Having compiled the TS files into JS files:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$ node &lt;file&gt;.js
+</pre></div>
+</div>
+</section>
+<section id="debugging-a-ts-file">
+<h2>Debugging a TS file<a class="headerlink" href="#debugging-a-ts-file" title="Permalink to this heading">#</a></h2>
+<p>vscode requires the debug configuration at <code class="docutils literal notranslate"><span class="pre">.vscode/launch.json</span></code>. The configuration includes properties like the ones listed below:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">program</span></code>: the TS file to debug</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">outFiles</span></code>: the corresponding compiled JS file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">preLaunchTask</span></code>: the operation to perform before debugging, in this case, compiling from TS to JS (hence the value below)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code>: Debugging scenario label</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0.2.0&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="nt">&quot;configurations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">       </span><span class="p">{</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;request&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;launch&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;samples: inheritance&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;skipFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">               </span><span class="s2">&quot;&lt;node_internals&gt;/**&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="p">],</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;preLaunchTask&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tsc: build - tsconfig.json&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;program&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;${workspaceFolder}/samples/inheritance/solution.ts&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">           </span><span class="nt">&quot;outFiles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">               </span><span class="s2">&quot;${workspaceFolder}/dist/inheritance/*.js&quot;</span><span class="w"></span>
+<span class="w">           </span><span class="p">]</span><span class="w"></span>
+<span class="w">       </span><span class="p">}</span><span class="w"></span>
+<span class="w">    </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Place breakpoints in the code editor and launch the debugging scenario. The kernell will run in debug mode and listen to the interrupt.</p>
+</section>
+<section id="eslinting">
+<h2>ESLinting<a class="headerlink" href="#eslinting" title="Permalink to this heading">#</a></h2>
+<p>Required (sufficient and necessary) linting specification are described below. The project has a redundant linting specification however in the files <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, <code class="docutils literal notranslate"><span class="pre">.eslintrc.json</span></code> and <code class="docutils literal notranslate"><span class="pre">.vscode/settings.json</span></code>. This is due to lack of knowledge on how to properly specify the babel typescript parser and the linter.</p>
+<p>At <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, the following configurations are required:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;devDependencies.&#64;babel/eslint-parser&quot;</span></code>: install the typescript parser <code class="docutils literal notranslate"><span class="pre">babel</span></code> specified in <code class="docutils literal notranslate"><span class="pre">.eslintrc.json</span></code> as <code class="docutils literal notranslate"><span class="pre">parser</span> <span class="pre">=</span> <span class="pre">&#64;babel/eslint-parser</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">devDependencies.&#64;typescript-eslint/eslint-plugin</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">babel.plugins</span> <span class="pre">=</span> <span class="pre">&#64;babel/plugin-transform-typescript</span></code>: the <code class="docutils literal notranslate"><span class="pre">babel</span></code> plugin (the babel config can also be specified at <code class="docutils literal notranslate"><span class="pre">.babelrc.json</span></code>)</p></li>
+</ul>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;devDependencies&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;@babel/eslint-parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.19.1&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;@babel/plugin-transform-typescript&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^7.20.2&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">       </span><span class="nt">&quot;@typescript-eslint/eslint-plugin&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^5.45.1&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">},</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;babel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;plugins&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;@babel/plugin-transform-typescript&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">]</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>At <code class="docutils literal notranslate"><span class="pre">.eslintrc.json</span></code>, it is required to specify the typescript parser <code class="docutils literal notranslate"><span class="pre">parser</span> <span class="pre">=</span> <span class="pre">&#64;babel/eslint-parser</span></code>.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@babel/eslint-parser&quot;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="jsdocs">
+<h2>JSdocs<a class="headerlink" href="#jsdocs" title="Permalink to this heading">#</a></h2>
+<p>Use <code class="docutils literal notranslate"><span class="pre">jsdocs</span></code> to document the TS code by typing <code class="docutils literal notranslate"><span class="pre">/**</span></code> the line just before the TS component.</p>
+</section>
+<section id="docs">
+<h2>Docs<a class="headerlink" href="#docs" title="Permalink to this heading">#</a></h2>
+<p>Generate static webpage docs from your <code class="docutils literal notranslate"><span class="pre">jsdocs</span></code> with <code class="docutils literal notranslate"><span class="pre">typedoc</span></code>. Configure <code class="docutils literal notranslate"><span class="pre">typedoc</span></code> either in <code class="docutils literal notranslate"><span class="pre">typedoc.json</span></code> or in <code class="docutils literal notranslate"><span class="pre">package.json</span></code> as:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;typedocOptions&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">         </span><span class="nt">&quot;entryPoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">         </span><span class="s2">&quot;samples/function/solution.ts&quot;</span><span class="w"></span>
+<span class="w">      </span><span class="p">],</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;out&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;docs/sphinx/src/typedocs&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>The task in the <code class="docutils literal notranslate"><span class="pre">npm</span></code> task runner (<code class="docutils literal notranslate"><span class="pre">packge.json</span></code>):</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">      </span><span class="nt">&quot;docs&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;typedoc samples/index.ts&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference external" href="https://github.com/TypeStrong/typedoc/issues/1515">github issue</a> on specifying the typedoc entrypoint explicitly in the npm script.</p>
+</div>
+</section>
+<section id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">number</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">undefined</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">object</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">any</span></code>: declared variable without a type, which allows the variable to hold any type.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">unknown</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">never</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">enum</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code>: multi-type array</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">array</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">function</span></code></p></li>
+</ul>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="task_runner.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Task Runner</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="../typescript.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Typescript</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2022, Arteklabs
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#about">About</a></li>
+<li><a class="reference internal" href="#typescript">Typescript</a></li>
+<li><a class="reference internal" href="#installing-typescript">Installing Typescript</a></li>
+<li><a class="reference internal" href="#compiling-a-ts-file-into-js">Compiling a TS file into JS</a></li>
+<li><a class="reference internal" href="#project-dependencies">Project Dependencies</a></li>
+<li><a class="reference internal" href="#running-a-ts-file">Running a TS file</a></li>
+<li><a class="reference internal" href="#debugging-a-ts-file">Debugging a TS file</a></li>
+<li><a class="reference internal" href="#eslinting">ESLinting</a></li>
+<li><a class="reference internal" href="#jsdocs">JSdocs</a></li>
+<li><a class="reference internal" href="#docs">Docs</a></li>
+<li><a class="reference internal" href="#data-types">Data Types</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/scripts/furo.js"></script>
+    </body>
+</html>

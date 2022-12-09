@@ -156,13 +156,12 @@ def docs(ctx, step='build', port=docker_host_sphinx_server_default_port, verbose
     if step == 'publish':
         docs(ctx,  step='build', port=port)
         cmds = [
-            "cp -a docs/sphinx/_build/html/. docs/sphinx",
-            "cd docs/sphinx"
+            "cp -a docs/sphinx/_build/html/. docs",
+            "cd docs/sphinx",
             "make clean",
             "cd ../..",
             "git add docs",
-            "git commit -m \"doc: publish\"",
-            "git push"
+            "git commit -m \"publish docs to githubpages\""
         ]
 
         if verbose:
@@ -170,7 +169,7 @@ def docs(ctx, step='build', port=docker_host_sphinx_server_default_port, verbose
         else:
             res = ctx.run(';'.join(cmds), hide='both')
 
-        print('remote publish: OK')
+        print('github pages publish: OK')
 
     if step == 'clean':
         cmds = [
