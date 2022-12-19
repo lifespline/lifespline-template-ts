@@ -192,6 +192,16 @@ vscode requires the debug configuration at ``.vscode/launch.json``. The configur
        ]
    }
 
+Note that the program path (here, ``${workspaceFolder}/samples/inheritance/solution.ts``) must be included in the ``tsconfig.json``:
+
+.. code-block:: json
+
+   {
+      "include": [
+         "samples/**/*.ts"
+      ]
+   }
+
 Place breakpoints in the code editor and launch the debugging scenario. The kernell will run in debug mode and listen to the interrupt.
 
 ESLinting
@@ -228,6 +238,13 @@ At ``.eslintrc.json``, it is required to specify the typescript parser ``parser 
    {
       "parser": "@babel/eslint-parser"
    }
+
+You can ignore lines of code with:
+
+.. code:: typescript
+
+   // @ts-ignore
+   type unused = 'var'
 
 JSdocs
 ------

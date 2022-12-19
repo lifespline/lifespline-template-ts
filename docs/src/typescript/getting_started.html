@@ -415,6 +415,14 @@ $ yes <span class="p">|</span> sudo apt autoremove
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
+<p>Note that the program path (here, <code class="docutils literal notranslate"><span class="pre">${workspaceFolder}/samples/inheritance/solution.ts</span></code>) must be included in the <code class="docutils literal notranslate"><span class="pre">tsconfig.json</span></code>:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">   </span><span class="nt">&quot;include&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">      </span><span class="s2">&quot;samples/**/*.ts&quot;</span><span class="w"></span>
+<span class="w">   </span><span class="p">]</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
 <p>Place breakpoints in the code editor and launch the debugging scenario. The kernell will run in debug mode and listen to the interrupt.</p>
 </section>
 <section id="eslinting">
@@ -444,6 +452,11 @@ $ yes <span class="p">|</span> sudo apt autoremove
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
 <span class="w">   </span><span class="nt">&quot;parser&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@babel/eslint-parser&quot;</span><span class="w"></span>
 <span class="p">}</span><span class="w"></span>
+</pre></div>
+</div>
+<p>You can ignore lines of code with:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// @ts-ignore</span><span class="w"></span>
+<span class="kr">type</span><span class="w"> </span><span class="nx">unused</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;var&#39;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
